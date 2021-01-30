@@ -1,29 +1,63 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import _import from "./asyncRouter";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    redirect: "/home"
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: "/home",
+    name: "Home",
+    meta: {
+      name: "首页"
+    },
+    component: () => _import("Home")
+  },
+  {
+    path: "/article_list/:id",
+    meta: {
+      name: "文章列表"
+    },
+    component: () => _import("template/article_list")
+  },
+  {
+    path: "/article_detail/:id",
+    meta: {
+      name: "文章详情"
+    },
+    component: () => _import("template/article_detail")
+  },
+  {
+    path: "/video/:id",
+    meta: {
+      name: "视频"
+    },
+    component: () => _import("template/myVideo")
+  },
+  {
+    path: "/picture/:id",
+    meta: {
+      name: "图片"
+    },
+    component: () => _import("template/myPicture")
+  },
+  {
+    path: "/subfield/:id",
+    meta: {
+      name: "分栏"
+    },
+    component: () => _import("template/subfield")
   }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;
