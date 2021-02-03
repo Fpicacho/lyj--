@@ -45,7 +45,7 @@ body {
     bottom: 0;
     left: 0;
     z-index: -10;
-    background-size: 100% 600px;
+    background-size: 100%;
     background-position: top;
     background-repeat: no-repeat;
     opacity: 0.35;

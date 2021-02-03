@@ -2,8 +2,10 @@
   <div class="subfield">
     <div class="banner-block">
       <el-carousel>
-        <el-carousel-item v-for="(item,index) in bannerList" :key="index">
-          <img :src="item" alt="">
+        <el-carousel-item v-for="(item,index) in bannerList" :key="index" v-if="item.slide_id === 5">
+          <a :href="item.url">
+            <img :src="item.image" alt="">
+          </a>
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -13,18 +15,23 @@
 
 <script>
 import subfieldDiv from "@/components/Subfield/subfield";
+import {mapActions} from "vuex";
 
 export default {
   name: "subfield",
   data() {
     return {
-      bannerList: [
-        'https://pic.baike.soso.com/ugc/baikepic2/0/20160905155609-1663743508.jpg/800'
-        , 'https://pic.baike.soso.com/ugc/baikepic2/0/ori-20200715190843-1787595843_jpg_442_506_31681.jpg/800'
-        , 'https://pic.baike.soso.com/ugc/baikepic2/0/20160912155158-602679312.jpg/800'
-        , 'https://pic.baike.soso.com/ugc/baikepic2/0/20160902065210-517491613.jpg/800'
-      ],
+      bannerList: [],
     }
+  },
+  created() {
+    this.getBanner().then((res) => {
+      this.bannerList = res.data
+      console.log(res.data)
+    })
+  },
+  methods: {
+    ...mapActions({getBanner: 'home/getBanner'})
   },
   components: {
     subfieldDiv,

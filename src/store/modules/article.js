@@ -10,6 +10,18 @@ const actions = {
   async getArticleDetails({ state, commit }, params) {
     let res = await article.getArticleDetails(params);
     return res;
+  },
+  async getCategoryInfo({ state, commit }, params) {
+    let res = await article.getCategoryInfo(params);
+    return res;
+  },
+  async portalCategory({ state, commit }, params) {
+    let res = await article.portalCategory(params);
+    return res;
+  },
+  async slipde_page({ state, commit }, params) {
+    let res = await article.slipde_page(params);
+    return res;
   }
 };
 export default {

@@ -3,7 +3,7 @@
     <breadcrumb/>
     <p class="title">{{ title }}</p>
     <p class="date">{{ date }}</p>
-    <p v-html="container"></p>
+    <div v-html="container" style="word-break:break-all"></div>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
     ...mapActions({getArticleDetails: "article/getArticleDetails"}),
     _getArticleDetails(id) {
       this.getArticleDetails(id).then(res => {
-        this.container = res.data.content
+        this.container = res.data[0].post_content
         this.title = res.data[0].post_title
         this.date = moment(res.data[0].create_time * 1000).format('YYYY-MM-DD HH:mm:ss')
       })

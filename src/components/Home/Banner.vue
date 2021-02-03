@@ -2,8 +2,10 @@
   <div class="banner">
     <div class="block">
       <el-carousel height="262px" v-if="this.$store.state.isBanner">
-        <el-carousel-item v-for="(item,index) in bannerList" :key="index">
-          <img :src="item" alt="" style="height: 98%">
+        <el-carousel-item v-for="(item,index) in bannerList" :key="index" v-if="item.slide_id === 3">
+          <a :href="item.url">
+            <img :src="item.image" alt="" style="height: 98%">
+          </a>
         </el-carousel-item>
       </el-carousel>
       <div class="bannerNewList" v-else>
@@ -45,10 +47,7 @@ export default {
   watch: {
     '$store.state.listId': function (nVal) {
       this.listId = nVal
-      console.log(this.listId)
       this.getArticleList({id: this.listId}).then(res => {
-        console.log(res.data)
-        // this.data_list = res.data
         this.data_list = []
         res.data.forEach(item => {
           item.create_time = moment(item.create_time * 1000).format('YYYY-MM-DD HH:mm:ss')

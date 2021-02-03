@@ -5,7 +5,7 @@
       <ul>
         <router-link tag="li" to="/home" active-class="active">首页</router-link>
         <router-link tag="li" active-class="active" v-for="(item,index) in getList"
-                     :to="item.template==='List'?'/article_list/'+item.article_id
+                     :to="item.template==='List'?'/subfield/'+item.article_id
                      :item.template==='Page'?'/article_detail/'+item.article_id
                      :item.template==3?'/video/'+item.article_id
                      :item.template==4?'/picture/'+item.article_id
@@ -18,7 +18,7 @@
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item v-for="(item,index) in item.child" :key="index">
                 <router-link
-                    :to="item.template==='List'?'/article_list/'+item.article_id
+                    :to="item.template==='List'?'/subfield/'+item.article_id
                     :item.template==='Page'?'/article_detail/'+item.article_id
                     :item.template==3?'/video/'+item.article_id
                     :item.template==4?'/picture/'+item.article_id
@@ -68,7 +68,7 @@ export default {
     height: 6px;
     background: #005fbc;
     border-radius: 5px;
-    margin-top: 37px;
+    //margin-top: 37px;
   }
 
   nav {

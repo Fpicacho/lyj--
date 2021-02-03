@@ -10,7 +10,7 @@
     <div class="bannerNewList">
       <ul>
         <li v-for="(item,index) in data_list" :key="index" @click="goto(item.id)">
-          <span>{{ item.post_title | ellipsis(25) }}</span>
+          <span>{{ item.post_title | ellipsis(15) }}</span>
           <span>{{ item.create_time }}</span>
         </li>
       </ul>
@@ -39,9 +39,9 @@ export default {
   created() {
     // BUG
     this.data_list = []
-    this.getArticleList({id: 35}).then(res => {
+    this.getArticleList({id: 15}).then(res => {
       res.data.forEach(item => {
-        item.create_time = moment(item.create_time * 1000).format('YYYY-MM-DD HH:mm:ss')
+        item.create_time = moment(item.create_time * 1000).format('YYYY-MM-DD')
         this.data_list.push(item)
       })
     })
@@ -52,7 +52,7 @@ export default {
       this.data_list = []
       this.getArticleList({id: item.article_id}).then(res => {
         res.data.forEach(item => {
-          item.create_time = moment(item.create_time * 1000).format('YYYY-MM-DD HH:mm:ss')
+          item.create_time = moment(item.create_time * 1000).format('YYYY-MM-DD')
           this.data_list.push(item)
         })
       })
@@ -108,7 +108,7 @@ export default {
         display: flex;
         justify-content: space-between;
         cursor: pointer;
-        margin-top: 8px;
+        margin-top: 8.5px;
 
         &:hover {
           color: #2A7208;
@@ -119,6 +119,13 @@ export default {
 }
 
 .handleColor {
-  color: #2A7208;
+  //color: #2A7208;
+  color: #fff;
+  background: #397c5f;
+  padding: 0 10px;
+
+  &:hover {
+    color: #fff !important;
+  }
 }
 </style>

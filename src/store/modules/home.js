@@ -12,7 +12,6 @@ const actions = {
   async getNavList({ state, commit }, params) {
     let res = await home.getNavList(params);
     commit("SET_LIST", res.data);
-    console.log(state.listInfo);
     return res;
   },
   async getBanner({ state, commit }, params) {
@@ -21,6 +20,10 @@ const actions = {
   },
   async getSubfield({ state, commit }, params) {
     let res = await home.getSubfield(params);
+    return res;
+  },
+  async getLists({ state, commit }, params) {
+    let res = await home.getLists(params);
     return res;
   }
 };

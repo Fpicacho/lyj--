@@ -6,7 +6,8 @@
         {{ item.name }}
       </li>
       <li>
-        <a href="https://www.baidu.com" style="text-decoration: none;color: #fff">
+        <a href="http://www.djclyj.com:8090/"
+           style="text-decoration: none;color: #fff;width: 98px;display: flex;justify-content: space-between" id="test">
           <span>●</span>
           办公系统
         </a>
@@ -31,7 +32,9 @@ export default {
   },
   methods: {
     clickSiderBar(index) {
-      this.$store.commit('setBanner', index)
+      console.log(index)
+      this.$router.push(`subfield/${index}`)
+      // this.$store.commit('setBanner', index)
     }
   }
 }
@@ -56,6 +59,16 @@ export default {
       cursor: pointer;
       display: flex;
       justify-content: space-evenly;
+      transition: 0.5s;
+      &:hover {
+        transition: 0.5s;
+        color: #0DBD40;
+        a:hover{
+          transition: 0.5s;
+          color: #0DBD40 !important;
+        }
+      }
+
     }
   }
 }
